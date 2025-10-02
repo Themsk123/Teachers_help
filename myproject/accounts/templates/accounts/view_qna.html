@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+<div class="container">
+    <h3>Generated Q&A</h3>
+    {% if qna %}
+    <pre style="white-space: pre-wrap;">{{ qna }}</pre>
+{% else %}
+    <div class="alert alert-warning">No QnA found in session.</div>
+{% endif %}
+
+
+    <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <textarea name="feedback" class="form-control mb-3" rows="3" placeholder="Give feedback to improve this QnA..."></textarea>
+        <button type="submit" class="btn btn-warning">Update QnA</button>
+    </form>
+
+    <div class="mt-4 d-flex gap-3">
+        <a href="?download_pdf=true" class="btn btn-danger">Download as PDF</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Return Home</a>
+    </div>
+</div>
+{% endblock %}

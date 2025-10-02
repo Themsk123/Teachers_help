@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+
+<h1>Welcome to Home Page</h1>
+
+{% if user.is_authenticated %}
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Teacher Features</h5>
+            <div class="d-flex flex-column flex-md-row gap-3">
+                <a href="{% url 'upload_video' %}" class="btn btn-primary">
+                    📹 Generate Video Notes
+                </a>
+                <a href="{% url 'upload_qna' %}" class="btn btn-success">
+                    📄 Generate Q&A from Notes
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+

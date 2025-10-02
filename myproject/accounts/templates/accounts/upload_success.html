@@ -1,0 +1,8 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+<div class="alert alert-success mt-4">
+    File uploaded successfully!<br>
+    <strong>Saved at:</strong> {{ file_path }}
+</div>
+<a href="{% url 'upload_file' %}" class="btn btn-link">Upload another file</a>
+{% endblock %}

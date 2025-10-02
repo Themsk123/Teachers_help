@@ -1,0 +1,36 @@
+{% extends 'accounts/base.html' %}
+{% block content %}
+<div class="container">
+    <!-- Notes Display -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3>Generated Notes</h3>
+            <pre>{{ note.content }}</pre>
+        </div>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4>Provide Feedback</h4>
+            <form method="POST">
+                {% csrf_token %}
+                <textarea name="feedback" class="form-control mb-3" 
+                          placeholder="Enter your feedback"></textarea>
+                <button type="submit" class="btn btn-warning">Update Notes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="d-flex gap-3">
+        <!-- Updated "Save as PDF" link with query parameter -->
+        <a href="{% url 'view_notes' note.id %}?download_pdf=true" class="btn btn-danger">
+            Save as PDF
+        </a>
+        <a href="{% url 'home' %}" class="btn btn-secondary">
+            Return Home
+        </a>
+    </div>
+</div>
+{% endblock %}
